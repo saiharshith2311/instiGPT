@@ -1,12 +1,15 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSun,faMoon ,faHome} from '@fortawesome/free-solid-svg-icons'
+import { faSun,faMoon ,faHome, faBars} from '@fortawesome/free-solid-svg-icons'
 
-export default function Header({isDark,onToggleTheme,currentPage,onNavigate,onHomeClick,chatTitle}) {
+export default function Header({isDark,onToggleTheme,currentPage,onNavigate,onHomeClick,onToggleSidebar}) {
 
   return (
     <header className='h-14 flex items-center justify-between px-3 md:px-5 bg-surface shrink-0 border-b border-border'>
-        <div className='flex items-center gap-3 '>
+        <div className='flex items-center gap-2'>
+            <button onClick={onToggleSidebar} className='md:hidden p-2 rounded-lg hover:bg-input text-text'>
+                <FontAwesomeIcon icon={faBars} />
+            </button>
             <img src="https://upload.wikimedia.org/wikipedia/en/6/69/IIT_Madras_Logo.svg" 
           alt="IITM" 
           className="h-8 w-8"/>

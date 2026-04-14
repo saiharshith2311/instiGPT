@@ -13,6 +13,7 @@ export default function App() {
     const [isLoading,setIsLoading]=useState(false)
     const [isDark,setIsDark]=useState(true)
     const [currentPage,setCurrentPage]=useState('chat')
+    const [sidebarOpen,setSidebarOpen]=useState(false)
 
     useEffect(()=>{
         if(isDark){
@@ -91,10 +92,11 @@ export default function App() {
   return (
     <div className='h-screen flex flex-col overflow-hidden'>
         <Header isDark={isDark} onToggleTheme={() =>setIsDark(!isDark)} currentPage={currentPage} onNavigate={setCurrentPage}
-            onHomeClick={() =>{setCurrentPage('chat'); setActiveChatId(null)}} chatTitle={activeChat?.title}/>
+            onHomeClick={() =>{setCurrentPage('chat'); setActiveChatId(null)}} 
+            onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}/>
             <div className='flex flex-1 overflow-hidden'>
-                <SideBar chats={chats} activeChatId={activeChatId} onSelectChat={setActiveChatId}
-                onNewChat={handleNewChat} onDeleteChat={handleDeleteChat}/>
+                <SideBar chats={chats} activeChatId={activeChatId} onSelectChat={(id) => {setActiveChatId(id); setSidebarOpen(false)}}
+                onNewChat={() => {handleNewChat(); setSidebarOpen(false)}} onDeleteChat={handleDeleteChat} sidebarOpen={sidebarOpen}/>
                 <main className='flex-1  flex-col flex overflow-hidden'>
                     {currentPage === 'about' 
     ? <AboutPage /> 

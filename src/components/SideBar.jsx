@@ -2,10 +2,11 @@ import { faComment, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
-export default function SideBar({chats,activeChatId,onSelectChat,onNewChat,onDeleteChat}) {
+export default function SideBar({chats,activeChatId,onSelectChat,onNewChat,onDeleteChat,sidebarOpen}) {
 
   return (
-    <aside className='w-64 bg-sidebar border-r hidden md:flex border-border flex flex-col h-full'>
+    <aside className={`w-64 bg-sidebar border-r border-border flex flex-col h-full
+      ${sidebarOpen ? 'fixed z-50 top-14 left-0 bottom-0' : 'hidden'} md:relative md:flex md:top-0 md:z-auto`}>
         <div className='p-3'>
             <button onClick={onNewChat} className='w-full flex items-center
              gap-2 px-4 py-2.5 rounded-lg border border-border hover:bg-input
