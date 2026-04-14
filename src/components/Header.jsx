@@ -5,17 +5,17 @@ import { faSun,faMoon ,faHome} from '@fortawesome/free-solid-svg-icons'
 export default function Header({isDark,onToggleTheme,currentPage,onNavigate,onHomeClick,chatTitle}) {
 
   return (
-    <header className='h-17 flex items-center justify-between px-5 bg-surface shrink-0 border-b border-border'>
+    <header className='h-14 flex items-center justify-between px-3 md:px-5 bg-surface shrink-0 border-b border-border'>
         <div className='flex items-center gap-3 '>
             <img src="https://upload.wikimedia.org/wikipedia/en/6/69/IIT_Madras_Logo.svg" 
           alt="IITM" 
           className="h-8 w-8"/>
-          <h1 className='font-extrabold '>instiGPT</h1>
+          <h1 className='font-extrabold text-sm md:text-base'>instiGPT</h1>
 
         </div>
 
-        <div className='flex items-center gap-1 mr-4'>
-        <button onClick={onHomeClick} className={`px-4 py-1.5 text-base rounded-lg transition-colors flex items-center gap-1.5 mr-50 font-bold
+        <div className='flex items-center gap-1 md:gap-2'>
+        <button onClick={onHomeClick} className={`px-2 md:px-4 py-1.5 text-sm md:text-base rounded-lg transition-colors flex items-center gap-1.5 mr-2 md:mr-6 font-bold
             ${currentPage === 'chat' 
               ? 'text-text bg-input font-semibold' 
               : 'text-text hover:bg-input'
@@ -26,7 +26,7 @@ export default function Header({isDark,onToggleTheme,currentPage,onNavigate,onHo
         </button>
         <button
           onClick={() => onNavigate('about')}
-          className={`px-3 py-1.5  text- rounded-lg transition-colors mr-50 font-bold
+          className={`px-2 md:px-3 py-1.5 text-sm md:text-base rounded-lg transition-colors mr-2 md:mr-6 font-bold
             ${currentPage === 'about' 
               ? 'text-text bg-input font-semibold' 
               : 'text-text hover:bg-input'
@@ -35,7 +35,7 @@ export default function Header({isDark,onToggleTheme,currentPage,onNavigate,onHo
           About Us
         </button>
         <button onClick={onToggleTheme} className='p-2 rounded-lg 
-        hover:bg-input transition text-muted mr-30'>
+        hover:bg-input transition text-muted'>
             <FontAwesomeIcon icon={isDark?faSun:faMoon} className='text-2xl'/>
         </button>
         </div>
